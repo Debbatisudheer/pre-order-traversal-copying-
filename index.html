@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Folder Actions</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="folder-container">
+  <div class="folder"></div>
+  <div class="folder-options">
+    <button id="copy-btn">Copy</button>
+    <button id="paste-btn">Paste</button>
+  </div>
+</div>
+
+<!-- Step-by-Step Breakdown of Copying a Folder and Its Contents -->
+<div class="copy-process">
+  <h>The logic behind pre-order traversal for copying folders is to systematically visit each folder and its contents, starting from the root folder and recursively copying files and subfolders before traversing deeper into the directory tree.</h>
+  <h1>Pre-order traversal performs the following steps: start at the root, process the current node, recursively traverse the left subtree, then recursively traverse the right subtree.</h1>
+    <h2>Step-by-Step Breakdown of Copying a Folder and Its Contents</h2>
+  <ol>
+    <li>Start at the Root Folder: We begin at the top-level folder that we want to copy, which we'll call the "source folder."</li>
+    <li>Copy the Current Folder: We make a copy of the source folder itself, including all its files and subfolders. This creates a duplicate of the source folder in the destination location.</li>
+    <li>Traverse the Contents of the Folder:
+        <ul>
+            <li>For each item (file or subfolder) within the source folder:
+                <ul>
+                    <li>If it's a file, we copy the file to the destination location.</li>
+                    <li>If it's a subfolder, we repeat steps 2 and 3 recursively for that subfolder. This means making a copy of the subfolder and then copying its contents.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>Repeat for Each Subfolder:
+        <ul>
+            <li>We continue this process recursively for each subfolder within the source folder.</li>
+            <li>For each subfolder, we copy the subfolder itself and then copy its contents (files and subfolders) recursively.</li>
+        </ul>
+    </li>
+    <li>Complete: Once we have copied all the files and subfolders within the source folder and its subfolders, the copying process is complete.</li>
+  </ol>
+</div>
+<div class="copying-process">
+  <h2>Copying Process</h2>
+  <p>Suppose we have the following directory structure that we want to copy:</p>
+  <pre>
+    SourceFolder
+    │
+    ├── File1.txt
+    ├── File2.txt
+    └── Subfolder
+        ├── Subfile1.txt
+        └── Subfile2.txt
+  </pre>
+  <p>Here's how we copy this directory structure step by step:</p>
+  <ol>
+    <li><strong>Start at the Source Folder (SourceFolder):</strong><br>
+        We begin at the top-level folder that we want to copy, which is "SourceFolder."</li>
+    <li><strong>Copy the Current Folder (SourceFolder):</strong><br>
+        We make a duplicate of the "SourceFolder" itself in the destination location.</li>
+    <li><strong>Traverse the Contents of the Folder:</strong><br>
+        For each item (file or subfolder) within the "SourceFolder":
+        <ul>
+          <li>If it's a file, such as "File1.txt" or "File2.txt," we copy the file to the destination location.</li>
+          <li>If it's a subfolder, such as "Subfolder," we repeat steps 2 and 3 recursively for that subfolder.</li>
+        </ul>
+    </li>
+    <li><strong>Repeat for Each Subfolder:</strong><br>
+        For the "Subfolder" within the "SourceFolder":
+        <ul>
+          <li>We make a duplicate of the "Subfolder" itself in the destination location.</li>
+          <li>We then copy the contents of the "Subfolder," including any files (such as "Subfile1.txt" and "Subfile2.txt") and subfolders, recursively.</li>
+        </ul>
+    </li>
+    <li><strong>Complete:</strong><br>
+        Once we have copied all the files and subfolders within the "SourceFolder" and its subfolders, the copying process is complete.</li>
+  </ol>
+  <p><strong>Total:</strong></p>
+  <ul>
+    <pre>
+                SourceFolder
+               /            \
+       File1.txt        File2.txt
+            \
+           Subfolder
+           /         \
+ Subfile1.txt   Subfile2.txt
+  </pre>
+    <li><strong>Folders Copied:</strong> 2 (SourceFolder, Subfolder)</li>
+    <li><strong>Files Copied:</strong> 4 (File1.txt, File2.txt, Subfile1.txt, Subfile2.txt)</li>
+  </ul>
+</div>
+<div class="complexity">
+  <h2>Time and Space Complexity</h2>
+  <p>The time and space complexity of copying a folder and its contents depend on several factors, including the number of files and subfolders in the folder, the size of each file, and the structure of the directory tree. Here's the analysis:</p>
+  <ul>
+    <li><strong>Time Complexity:</strong>
+      <ul>
+        <li>The time complexity for copying each file is O(1).</li>
+        <li>The time complexity for traversing each subfolder depends on the depth of the directory tree and the number of files and subfolders within each subfolder. In the worst-case scenario, it can be O(n), where n is the total number of files and subfolders.</li>
+      </ul>
+    </li>
+    <li><strong>Space Complexity:</strong>
+      <ul>
+        <li>The space complexity for copying a folder and its contents depends on the additional memory required to store the copied files and subfolders in the destination location.</li>
+        <li>In the worst-case scenario, where all files and subfolders must be copied, the space complexity can be O(n), where n is the total size of all files and subfolders in the directory tree.</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<div class="complexity">
+  <h2>Time and Space Complexity</h2>
+  <p>The time and space complexity of copying a folder and its contents depend on several factors. Here are some strategies to reduce them:</p>
+  <ul>
+    <li><strong>Use Efficient File Copying Techniques:</strong> Implement buffered I/O or higher-level file copying functions to improve efficiency.</li>
+    <li><strong>Implement Incremental Copying:</strong> Identify and copy only new or modified files to reduce complexity.</li>
+    <li><strong>Parallelize Copying Operations:</strong> Utilize multiple threads or processes for copying to utilize system resources efficiently.</li>
+    <li><strong>Optimize Directory Traversal:</strong> Use efficient traversal algorithms to minimize overhead.</li>
+    <li><strong>Avoid Redundant Copying:</strong> Check for duplicate files before copying to avoid unnecessary operations.</li>
+    <li><strong>Optimize Memory Usage:</strong> Use memory-efficient data structures and algorithms to minimize memory footprint.</li>
+  </ul>
+</div>
+<footer>
+  <p>&copy; 2024 @sudheer debbati. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
